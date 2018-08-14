@@ -31,4 +31,8 @@ router.get('/posts', Posts.find);
 // To be protected Routes
 router.post('/post', Posts.create);
 
+router.delete('/post/:id', Posts.destroy);
+
+
+
 module.exports = router;
