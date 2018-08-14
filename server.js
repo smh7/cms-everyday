@@ -10,7 +10,7 @@ const router = require('./routes');
 
 var app = new Koa();
 app.use(logger())
-const PORT = 8080;
+const PORT = 8081;
 
 const db = require('./models/index');
 // db.sequelize.sync({force:true})
