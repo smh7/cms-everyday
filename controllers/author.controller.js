@@ -4,7 +4,7 @@ const JwtService = require('../services/jwt.service');
 
 module.exports = {
 /**
- *@api {post} /signup
+ *@api {post} /signup-everyday
  *@apiGroup Author 
  * @apiName AuthorCard
  * @apiSuccess {Object} Author A newly signed up cms Author
@@ -16,8 +16,6 @@ module.exports = {
  * @apiParam {String} [lastname]
  * @apiParam {String} [email]
  * @apiParam {String} [password]
- * @apiParam {DateOnly} [joined_date] 
- *  
  */
 
   async create(ctx){
@@ -28,14 +26,13 @@ module.exports = {
         lastname: ctx.request.body.lastname,
         email: ctx.request.body.email,
         password: ctx.request.body.password,
-        joined_date: ctx.request.joined_date
       })
     } catch (error) {
         ctx.throw(500, err);
     }
   },
     /**
-     *@api {post} /login
+     *@api {post} /login-everyday
      *@apiGroup Author
      * @apiName loginUser
      * @apiParam {String} [username] user must need to provide username

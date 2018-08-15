@@ -8,17 +8,17 @@ const {
 } = require('../controllers');
 
 // User Routes
-router.post('/signup', User.create);
+router.post('/signup-cms', User.create);
       // .get('/login', User.login);
 
-router.post('/login', User.login);
+router.post('/login-cms', User.login);
       // .get('/cms', Card.find);
 
 // Author Routes
-router.post('/signup', Author.create);
-      // .get('/login', User.login);
+router.post('/signup-everyday', Author.create);
+      // .get('/login-everyday', Author.login);
 
-router.post('/login', Author.login);
+router.post('/login-everyday', Author.login);
       // .get('/cms', Card.find);
 
 // Card Routes
