@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/smh7/cms-app3#readme",
   "dependencies": {
+    "@koa/cors": "^2.2.2",
     "bcrypt": "^1.0.3",
     "jsonwebtoken": "^8.1.1",
     "koa": "^2.4.1",

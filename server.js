@@ -4,12 +4,15 @@ const Koa = require('koa');
 const Router = require('koa-router');
 const bodyParser = require('koa-parser');
 const _ = require('lodash');
+const cors = require('@koa/cors');
+ 
 
 const router = require('./routes'); 
 
 
 var app = new Koa();
 app.use(logger())
+app.use(cors());
 const PORT = 8081;
 
 const db = require('./models/index');
