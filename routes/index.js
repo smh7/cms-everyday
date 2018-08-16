@@ -29,7 +29,7 @@ router.post('/card', Card.create);
 
 // Post Routes
 router.get('/posts', Posts.find);
-router.get('/post/:post_title', Posts.findOne);
+router.get('/post/:id', Posts.findOne);
 // Testing
 // router.get(
 //       '/userpost/:id',

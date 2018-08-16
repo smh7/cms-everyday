@@ -74,7 +74,9 @@ module.exports = {
       try {
 
           const post = await ctx.db.Posts.findOne({ 
-              id: ctx.params.id
+              where: {
+                id: ctx.params.id 
+              }
           });
           if (!post) {
               ctx.throw(404, 'card id is invalid');
