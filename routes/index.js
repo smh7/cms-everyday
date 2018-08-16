@@ -23,13 +23,30 @@ router.post('/login-everyday', Author.login);
 
 // Card Routes
 router.get('/cards', Card.find);
+router.get('/cards/:id', Card.findOne);
 // To be protected Routes
 router.post('/card', Card.create);
 
 // Post Routes
 router.get('/posts', Posts.find);
+router.get('/post/:post_title', Posts.findOne);
+// Testing
+// router.get(
+//       '/userpost/:id',
+//       (ctx, next) => {
+//         return Posts.findOne(ctx.params.id).then(function(post) {
+//           ctx.post = post;
+//           next();
+//         });
+//       },
+//       ctx => {
+//         console.log(ctx.post);
+//         // => { id: 17, name: "Alex" }
+//       }
+//     );
 // To be protected Routes
 router.post('/post', Posts.create);
+router.put('/post/:id', Posts.update);
 
 router.delete('/post/:id', Posts.destroy);
 

@@ -22,6 +22,7 @@ app.context.db = db;
 app.use(serve(__dirname + '/public'));
 app.use(bodyParser())// make sure you use bodyParser before the router
 app.use(router.routes());
+app.use(router.allowedMethods());
 
 app.listen(PORT);
 console.log(`Server is listening on PORT ${PORT}`);

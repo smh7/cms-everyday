@@ -69,10 +69,11 @@ module.exports = {
      *  "authorization" : "jkahdkjashdk324324342"
      * }
      */
+    //id: ctx.params.id within findOne
     async findOne(ctx){
       try {
 
-          const post = await ctx.db.Posts.findOne({
+          const post = await ctx.db.Posts.findOne({ 
               id: ctx.params.id
           });
           if (!post) {
