@@ -29,7 +29,8 @@ module.exports = {
         list_group1: ctx.request.body.list_group1,
         list_group2: ctx.request.body.list_group2,
         list_group3: ctx.request.body.list_group3,
-        mood: ctx.request.body.mood
+        mood: ctx.request.body.mood,
+        AuthorId: ctx.request.body.AuthorId
       })
     } catch (error) {
         ctx.throw(500, error);
@@ -142,7 +143,8 @@ module.exports = {
             list_group1: ctx.request.body.list_group1,
             list_group2: ctx.request.body.list_group2,
             list_group3: ctx.request.body.list_group3,
-            mood: ctx.request.body.mood
+            mood: ctx.request.body.mood,
+            AuthorId: ctx.request.body.AuthorId
           }, {
               where: {
                   id: ctx.params.id

@@ -62,9 +62,10 @@ module.exports = {
         ctx.throw(400, 'please provide password')
       }
 
-      const user = await ctx.db.User.findOne({
+      const user = await ctx.db.Author.findOne({
         where: {
-          username
+          username,
+          password
         }
       })
 
