@@ -50,7 +50,7 @@ module.exports = {
 
   async findPublic(ctx){
     try {
-      ctx.body = await ctx.db.Posts.findAll({});
+      ctx.body = await ctx.db.Posts.findAll({order: [['updatedAt', 'DESC']]});
     } catch (error) {
       ctx.throw(500, err);
     }
