@@ -41,6 +41,25 @@ module.exports = {
    * @api {get} /posts
    * @apiGroup Post
    *  @apiName GetPosts
+   *  @apiSuccess {Object[]} Post List of All Posts
+   *  @apiExample {curl} Example usage:
+   *  curl -i http://localhost:8080/posts
+   *  @apiDescription Any User Can Return a View of all Product Cards
+   * 
+   */
+
+  async findPublic(ctx){
+    try {
+      ctx.body = await ctx.db.Posts.findAll({order: [['updatedAt', 'DESC']]});
+    } catch (error) {
+      ctx.throw(500, err);
+    }
+  },
+
+   /**
+   * @api {get} /posts
+   * @apiGroup Post
+   *  @apiName GetPosts
    *  @apiSuccess {Object[]} Post List of Author's Posts
    *  @apiExample {curl} Example usage:
    *  curl -i http://localhost:8080/posts
@@ -48,9 +67,14 @@ module.exports = {
    * 
    */
 
-  async find(ctx){
+  async findAuthorPosts(ctx){
     try {
-      ctx.body = await ctx.db.Posts.findAll({});
+      ctx.body = await ctx.db.Posts.findAll({ order: [["updatedAt", 'DESC']],
+    where: {
+        AuthorId: ctx.state.author
+    }
+      });
+      console.log("ctx.state is ",ctx.state);
     } catch (error) {
       ctx.throw(500, err);
     }
@@ -76,7 +100,7 @@ module.exports = {
 
           const post = await ctx.db.Posts.findOne({ 
               where: {
-                id: ctx.params.id 
+                id: ctx.params.id
               }
           });
           if (!post) {

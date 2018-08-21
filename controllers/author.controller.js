@@ -19,14 +19,26 @@ module.exports = {
  */
 
   async create(ctx){
+    let {username, firstname, lastname, email, password} = ctx.request.body;
+
+    if (!username) {
+      ctx.throw(400, 'please provide the username')
+  }
+  if (!password) {
+      ctx.throw(400, 'please provide the password')
+  }
+
+  const encryptedPassword = await UtilService.hashPassword(password);
+    
     try {
       ctx.body = await ctx.db.Author.create({
-        username: ctx.request.body.username,
-        firstname: ctx.request.body.firstname,
-        lastname: ctx.request.body.lastname,
-        email: ctx.request.body.email,
-        password: ctx.request.body.password,
+        username,
+        firstname,
+        lastname,
+        email,
+        password: encryptedPassword
       })
+      ctx.body = 'Signup successful';
     } catch (error) {
         ctx.throw(500, err);
     }
@@ -62,27 +74,27 @@ module.exports = {
         ctx.throw(400, 'please provide password')
       }
 
-      const user = await ctx.db.Author.findOne({
+      const author = await ctx.db.Author.findOne({
         where: {
-          username,
-          password
+          username
         }
       })
 
-      if(!user) {
+      if(!author) {
         ctx.throw(500, 'unable to proces request');
       }
-      const matched = UtilService.comparedPassword(password, user.password);
+      const matched = UtilService.comparedPassword(password, author.password);
       if (matched) {
 
           //create a json webtoken for the user
           const token = JwtService.issue({
               payload:{
-                  user: user.id
+                  author: author.id
               }
           },'1 day');
 
           ctx.body = {token};
+      
 
       } else {
           ctx.throw(500, 'invalid password');

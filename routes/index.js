@@ -6,6 +6,8 @@ const {
   Author,
   Posts
 } = require('../controllers');
+const isAuthenticated = require('../policies/isAuthenticated');
+
 
 // User Routes
 router.post('/signup-cms', User.create);
@@ -27,24 +29,14 @@ router.get('/cards/:id', Card.findOne);
 // To be protected Routes
 router.post('/card', Card.create);
 
-// Post Routes
-router.get('/posts', Posts.find);
+// Public Routes
+router.get('/posts-public', Posts.findPublic);
+
+
 router.get('/post/:id', Posts.findOne);
-// Testing
-// router.get(
-//       '/userpost/:id',
-//       (ctx, next) => {
-//         return Posts.findOne(ctx.params.id).then(function(post) {
-//           ctx.post = post;
-//           next();
-//         });
-//       },
-//       ctx => {
-//         console.log(ctx.post);
-//         // => { id: 17, name: "Alex" }
-//       }
-//     );
+
 // To be protected Routes
+router.get('/posts', isAuthenticated, Posts.findAuthorPosts);
 router.post('/post', Posts.create);
 router.put('/post/:id', Posts.update);
 

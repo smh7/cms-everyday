@@ -11,13 +11,13 @@ module.exports = async (ctx, next) => {
 
     const decodedToken = JwtService.verify(token);
 
-    const  user = await ctx.db.User.findOne({
+    const  author = await ctx.db.Author.findOne({
         where: {
-            id : decodedToken.payload.user
+            id : decodedToken.payload.author
         }
     });
-    if(user){
-        ctx.state.user = user.id;
+    if(author){
+        ctx.state.author = author.id;
         await next();
     }
     else{
