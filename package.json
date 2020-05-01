@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "doc": "apidoc -i controllers/ -o public/"
+    "doc": "apidoc -i controllers/ -o public/",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -32,6 +34,8 @@
     "koa-static": "^4.0.2",
     "lodash": "^4.17.11",
     "mysql2": "^1.6.4",
-    "sequelize": "^4.42.0"
-  }
+    "sequelize": "^4.42.0",
+    "snyk": "^1.316.1"
+  },
+  "snyk": true
 }
