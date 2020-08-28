@@ -30,7 +30,7 @@
     "koa-parser": "^0.4.2",
     "koa-router": "^7.3.0",
     "koa-static": "^4.0.2",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.17",
     "mysql2": "^1.6.4",
     "sequelize": "^4.42.0"
   }
