@@ -22,11 +22,11 @@
   "homepage": "https://github.com/smh7/cms-app3#readme",
   "dependencies": {
     "@koa/cors": "^2.2.3",
-    "bcrypt": "^1.0.3",
+    "bcrypt": "^5.0.1",
     "dotenv": "^6.2.0",
     "jsonwebtoken": "^8.4.0",
     "koa": "^2.6.2",
-    "koa-logger": "^3.2.0",
+    "koa-logger": "^3.2.1",
     "koa-parser": "^0.4.2",
     "koa-router": "^7.3.0",
     "koa-static": "^4.0.2",
